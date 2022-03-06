@@ -1,4 +1,3 @@
-import os
 from flask import Flask, jsonify
 
 def create_app():
@@ -6,7 +5,7 @@ def create_app():
 
     @app.route("/")
     def hello_world():
-        return jsonify({"DATABASE_URL": os.getenv('DATABASE_URL')})
+        return jsonify({"text": "Hello, World!"})
 
     return app
 
