@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: "mydb"
+      POSTGRES_USER: "app_user"
+      POSTGRES_PASSWORD: "12345#passwd"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
