@@ -9,7 +9,9 @@ from models import db
 def create_app():
     app = Flask(__name__)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+    # replacing heroku connection string to sqlalchemy format
+    app.config['SQLALCHEMY_DATABASE_URI'] = \
+        os.getenv('DATABASE_URL').replace("postgres://", "postgresql://", 1)
     db.init_app(app)
     Migrate(app, db, compare_type=True)
 
